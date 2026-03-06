@@ -7,11 +7,11 @@ com o mesmo parcialmente resolvido pelo instrutor.
 
 <strong>Telas:</strong>
 
-Tela principal
+Menu principal
 <p>
 <img width="231" height="276" alt="image" src="https://github.com/user-attachments/assets/2c0f29bb-e08b-4697-9785-0ef4521c387e" />
 <p>
-Gestão de Usuários
+Gestão de usuários
 <p>
 <img width="208" height="223" alt="image" src="https://github.com/user-attachments/assets/bbf7efee-c6b8-4df4-a865-7b4c89c5a71b" />
 <p>
