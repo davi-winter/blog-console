@@ -1,13 +1,10 @@
-﻿using Blog.Models;
-using Blog.Repositories;
-using Blog.Screens.CategoryScreens;
+﻿using Blog.Screens.CategoryScreens;
 using Blog.Screens.PostScreens;
 using Blog.Screens.RoleScreens;
 using Blog.Screens.TagScreens;
 using Blog.Screens.UserScreens;
 using Blog.Screens.UserRoleScreens;
 using Blog.Screens.PostTagScreens;
-using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
 using Blog.Screens.ReportsScreens;
 
@@ -19,16 +16,9 @@ namespace Blog
 
         static void Main(string[] args)
         {
-            // using var connection = new SqlConnection(CONNECTION_STRING);
-            // var repository = new Repository<User>(connection);
             Database.Connection = new SqlConnection(CONNECTION_STRING);
-
             Database.Connection.Open();
-
             Load();
-            //ReadUsersWithAuthors(Database.Connection);
-            //ReadUsersWithRoles(Database.Connection);
-
             Console.ReadKey();
             Database.Connection.Close();
         }
@@ -80,79 +70,6 @@ namespace Blog
                     break;
                 default: Load(); break;
             }
-        }
-
-        private static void CreateUser(Repository<User> repository)
-        {
-            var user = new User
-            {
-                //Id = 1,
-                Bio = "8x Microsoft MVP",
-                Email = "andre@balta.io",
-                Image = "https://balta.io/andrebaltieri.jpg",
-                Name = "André Baltieri",
-                Slug = "andre-baltieri",
-                PasswordHash = Guid.NewGuid().ToString()
-            };
-
-            repository.Create(user);
-
-            Console.WriteLine("Usuário criado: " + user.Name);
-        }
-
-        private static void UpdateUser(Repository<User> repository)
-        {
-            var user = repository.Read(1);
-            user.Email = "hello@balta.io";
-            repository.Update(user);
-
-            Console.WriteLine(user?.Email);
-        }
-
-        private static void DeleteUser(Repository<User> repository)
-        {
-            var user = repository.Read(1);
-            repository.Delete(user);
-
-            Console.WriteLine("Usuário deletado: " + user.Name);
-        }
-
-        private static void ReadUser(Repository<User> repository)
-        {
-            var user = repository.Read(1);
-            Console.WriteLine(user.Name);
-        }
-
-        /*private static void ReadUsers(Repository<User> repository)
-        {
-            var users = repository.Read();
-
-            foreach (var user in users)
-                Console.WriteLine(user.Name);
-        }*/
-
-        static void ReadUsersWithRoles(SqlConnection connection)
-        {
-            var repository = new UserRepository(connection);
-            var items = repository.ListUserRoles();
-
-            foreach (var item in items)
-            {
-                Console.WriteLine(item.Name);
-                foreach (var role in item.Roles)
-                {
-                    Console.WriteLine($" - {role.Name}");
-                }
-            }
-        }
-
-        static void ReadUsersWithAuthors(SqlConnection connection)
-        {
-            var repository = new UserRepository(connection);
-            var items = repository.ListUserAuthors();
-
-            foreach (var item in items)
-                Console.WriteLine(item.Name);
         }
     }
 }

@@ -63,3 +63,4 @@ C:\balta\projects\AcessoDadosDotNet\Blog\obj\Debug\net10.0\refint\Blog.dll
 C:\balta\projects\AcessoDadosDotNet\Blog\obj\Debug\net10.0\Blog.pdb
 C:\balta\projects\AcessoDadosDotNet\Blog\obj\Debug\net10.0\Blog.genruntimeconfig.cache
 C:\balta\projects\AcessoDadosDotNet\Blog\obj\Debug\net10.0\ref\Blog.dll
+C:\balta\projects\AcessoDadosDotNet\Blog\obj\Debug\net10.0\Blog.sourcelink.json
